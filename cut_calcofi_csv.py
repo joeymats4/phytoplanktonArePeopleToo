@@ -9,23 +9,16 @@ def extract_clean_phytoplankton_data(input_file, output_file):
     ]
     
     try:
-        # 1. Load the dataset
         df = pd.read_csv(input_file, low_memory=False)
-        
-        # 2. Strip any hidden spaces from the column headers
+
         df.columns = df.columns.str.strip()
         
-        # 3. Check which columns exist (to prevent errors)
         available_cols = [col for col in target_columns if col in df.columns]
         
-        # 4. Extract the subset
         extracted_df = df[available_cols]
         
-        # 5. Remove any row that contains ANY empty/NaN values
-        # 'how=any' means if a single column is empty, the whole row is dropped
         clean_df = extracted_df.dropna(how='any')
         
-        # 6. Save the results
         clean_df.to_csv(output_file, index=False)
         
         print("--- Extraction Successful ---")
@@ -37,5 +30,4 @@ def extract_clean_phytoplankton_data(input_file, output_file):
     except Exception as e:
         print(f"An error occurred: {e}")
 
-# Usage: Replace 'your_input_file.csv' with your actual filename
 extract_clean_phytoplankton_data('Cleaned_CalCOFI_Phytoplankton.csv', 'Finalized_CalCOFI_Phytoplankton.csv')

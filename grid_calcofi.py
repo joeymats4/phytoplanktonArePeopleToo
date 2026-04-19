@@ -16,7 +16,6 @@ lon_step = GRID_MILES / (MILES_PER_DEG_LAT * np.cos(mean_lat_rad))
 df['_row'] = ((df['Lat_Dec'] - min_lat) / lat_step).astype(int)
 df['_col'] = ((df['Lon_Dec'] - min_lon) / lon_step).astype(int)
 
-# Build a stable grid ID mapping sorted by (row, col) with bounding box coords
 unique_cells = df[['_row', '_col']].drop_duplicates().sort_values(['_row', '_col']).reset_index(drop=True)
 unique_cells['Grid_ID'] = ['grid' + str(i + 1) for i in range(len(unique_cells))]
 unique_cells['Lat_Min'] = (min_lat + unique_cells['_row'] * lat_step).round(3)
