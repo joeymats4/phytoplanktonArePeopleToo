@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python grid_calcofi.py)",
+      "Bash(python -c ' *)"
+    ]
+  }
+}
