@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(python grid_calcofi.py)",
-      "Bash(python -c ' *)"
+      "Bash(python -c ' *)",
+      "Bash(pip list *)",
+      "Bash(python -c \"import torch; print\\(torch.__version__\\); x = torch.tensor\\([1.0]\\); print\\('torch works:', x\\)\")"
     ]
   }
 }
